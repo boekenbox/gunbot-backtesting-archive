@@ -27,7 +27,7 @@ If you find GitHub too complicated, you can join our Telegram group and drop you
 
 If GitHub seems too complicated, don't worry! Join our Telegram group and share your backtesting reports there:
 
-- [Telegram Group](https://t.me/gunbotbactktestingreports) 
+- [Telegram Group](https://t.me/gunbot_backtesting_reports) 
 
 ## Repository Structure
 
