@@ -1,51 +1,51 @@
 [
     {
-        "id": "1pk12sqj",
+        "id": "zqu7b1zo",
         "pair": "BNB-IO",
         "exchange": "binance",
-        "from": 1720821600000,
-        "to": 1721426400000,
-        "timestamp": "2024-07-20T17:21:46.676426",
+        "from": 1720908000000,
+        "to": 1721512800000,
+        "timestamp": "2024-07-21T11:32:00.037912",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "5"
         },
         "performance": {
-            "ROI": "5.08%",
-            "Sharpe ratio": "1.22",
-            "Sortino ratio": "16.38",
-            "Average pnl %": "2.59%",
-            "Volume": "40.507186 BNB"
+            "ROI": "3.72%",
+            "Sharpe ratio": "1.32",
+            "Sortino ratio": "33.25",
+            "Average pnl %": "3.06%",
+            "Volume": "24.074239 BNB"
         }
     },
     {
-        "id": "unitdzre",
+        "id": "87wvqctx",
         "pair": "BNB-ALT",
         "exchange": "binance",
-        "from": 1720821600000,
-        "to": 1721426400000,
-        "timestamp": "2024-07-20T17:16:17.438997",
+        "from": 1720908000000,
+        "to": 1721512800000,
+        "timestamp": "2024-07-21T11:38:35.413412",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "5"
         },
         "performance": {
-            "ROI": "3.61%",
-            "Sharpe ratio": "0.94",
-            "Sortino ratio": "27.19",
-            "Average pnl %": "3.42%",
-            "Volume": "21.303691 BNB"
+            "ROI": "3.63%",
+            "Sharpe ratio": "1.26",
+            "Sortino ratio": "45.32",
+            "Average pnl %": "4.62%",
+            "Volume": "19.134823 BNB"
         }
     },
     {
-        "id": "jr1t0i7r",
-        "pair": "BNB-LISTA",
+        "id": "vfovl3hi",
+        "pair": "BNB-WIN",
         "exchange": "binance",
-        "from": 1720821600000,
-        "to": 1721426400000,
-        "timestamp": "2024-07-20T17:35:48.416591",
+        "from": 1720908000000,
+        "to": 1721512800000,
+        "timestamp": "2024-07-21T11:00:39.347814",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
@@ -53,150 +53,150 @@
         },
         "performance": {
             "ROI": "3.27%",
-            "Sharpe ratio": "0.84",
-            "Sortino ratio": "13.87",
-            "Average pnl %": "2.55%",
-            "Volume": "20.407232 BNB"
+            "Sharpe ratio": "1.31",
+            "Sortino ratio": "20.8",
+            "Average pnl %": "2.44%",
+            "Volume": "26.497928 BNB"
         }
     },
     {
-        "id": "lph7aq8l",
-        "pair": "BNB-PORTAL",
-        "exchange": "binance",
-        "from": 1720821600000,
-        "to": 1721426400000,
-        "timestamp": "2024-07-20T17:37:19.705049",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "5"
-        },
-        "performance": {
-            "ROI": "3.02%",
-            "Sharpe ratio": "1.44",
-            "Sortino ratio": "18.29",
-            "Average pnl %": "2.45%",
-            "Volume": "30.213074 BNB"
-        }
-    },
-    {
-        "id": "jbij81ri",
-        "pair": "BNB-PIXEL",
-        "exchange": "binance",
-        "from": 1720821600000,
-        "to": 1721426400000,
-        "timestamp": "2024-07-20T17:35:28.288490",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "5"
-        },
-        "performance": {
-            "ROI": "2.67%",
-            "Sharpe ratio": "0.98",
-            "Sortino ratio": "10.76",
-            "Average pnl %": "2.55%",
-            "Volume": "25.220391 BNB"
-        }
-    },
-    {
-        "id": "1o5x28y5",
-        "pair": "BNB-LPT",
-        "exchange": "binance",
-        "from": 1720821600000,
-        "to": 1721426400000,
-        "timestamp": "2024-07-20T17:49:44.477285",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "5"
-        },
-        "performance": {
-            "ROI": "2.54%",
-            "Sharpe ratio": "1.26",
-            "Sortino ratio": "14.17",
-            "Average pnl %": "2.84%",
-            "Volume": "21.808244 BNB"
-        }
-    },
-    {
-        "id": "2z3igt8f",
-        "pair": "BNB-ENA",
-        "exchange": "binance",
-        "from": 1720821600000,
-        "to": 1721426400000,
-        "timestamp": "2024-07-20T17:22:45.688682",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "5"
-        },
-        "performance": {
-            "ROI": "2.49%",
-            "Sharpe ratio": "1.2",
-            "Sortino ratio": "12.69",
-            "Average pnl %": "2.42%",
-            "Volume": "25.571365 BNB"
-        }
-    },
-    {
-        "id": "iulxzodn",
-        "pair": "BNB-NOT",
-        "exchange": "binance",
-        "from": 1720821600000,
-        "to": 1721426400000,
-        "timestamp": "2024-07-20T18:03:05.977810",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "5"
-        },
-        "performance": {
-            "ROI": "2.46%",
-            "Sharpe ratio": "1.06",
-            "Sortino ratio": "14.02",
-            "Average pnl %": "2.54%",
-            "Volume": "19.795413 BNB"
-        }
-    },
-    {
-        "id": "k3q0lhib",
+        "id": "j4p8d67g",
         "pair": "BNB-ETHFI",
         "exchange": "binance",
-        "from": 1720821600000,
-        "to": 1721426400000,
-        "timestamp": "2024-07-20T17:36:04.836673",
+        "from": 1720908000000,
+        "to": 1721512800000,
+        "timestamp": "2024-07-21T11:47:04.469565",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "5"
         },
         "performance": {
-            "ROI": "2.45%",
-            "Sharpe ratio": "1.19",
-            "Sortino ratio": "10.76",
-            "Average pnl %": "2.2%",
-            "Volume": "31.726691 BNB"
+            "ROI": "3.06%",
+            "Sharpe ratio": "1.14",
+            "Sortino ratio": "13.06",
+            "Average pnl %": "2.08%",
+            "Volume": "36.97941 BNB"
         }
     },
     {
-        "id": "mi9gpu4u",
-        "pair": "BNB-GALA",
+        "id": "p38et2zl",
+        "pair": "BNB-PORTAL",
         "exchange": "binance",
-        "from": 1720821600000,
-        "to": 1721426400000,
-        "timestamp": "2024-07-20T17:09:57.373348",
+        "from": 1720908000000,
+        "to": 1721512800000,
+        "timestamp": "2024-07-21T11:23:42.890240",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "5"
         },
         "performance": {
-            "ROI": "2.28%",
-            "Sharpe ratio": "1.33",
-            "Sortino ratio": "11.84",
-            "Average pnl %": "1.71%",
-            "Volume": "30.266151 BNB"
+            "ROI": "2.65%",
+            "Sharpe ratio": "1.66",
+            "Sortino ratio": "20.23",
+            "Average pnl %": "2.19%",
+            "Volume": "29.169119 BNB"
+        }
+    },
+    {
+        "id": "z8dotazq",
+        "pair": "BNB-SAGA",
+        "exchange": "binance",
+        "from": 1720908000000,
+        "to": 1721512800000,
+        "timestamp": "2024-07-21T11:59:35.727525",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "5"
+        },
+        "performance": {
+            "ROI": "2.34%",
+            "Sharpe ratio": "1.25",
+            "Sortino ratio": "21.19",
+            "Average pnl %": "3.8%",
+            "Volume": "17.10536 BNB"
+        }
+    },
+    {
+        "id": "onuldvfr",
+        "pair": "BNB-ARKM",
+        "exchange": "binance",
+        "from": 1720908000000,
+        "to": 1721512800000,
+        "timestamp": "2024-07-21T11:51:22.563670",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "5"
+        },
+        "performance": {
+            "ROI": "2.27%",
+            "Sharpe ratio": "1.52",
+            "Sortino ratio": "19.7",
+            "Average pnl %": "2.24%",
+            "Volume": "25.984212 BNB"
+        }
+    },
+    {
+        "id": "qmss1d2h",
+        "pair": "BNB-GALA",
+        "exchange": "binance",
+        "from": 1720908000000,
+        "to": 1721512800000,
+        "timestamp": "2024-07-21T10:56:55.282167",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "5"
+        },
+        "performance": {
+            "ROI": "2.19%",
+            "Sharpe ratio": "1.22",
+            "Sortino ratio": "13.59",
+            "Average pnl %": "1.65%",
+            "Volume": "31.586897 BNB"
+        }
+    },
+    {
+        "id": "8hofj250",
+        "pair": "BNB-RAY",
+        "exchange": "binance",
+        "from": 1720908000000,
+        "to": 1721512800000,
+        "timestamp": "2024-07-21T11:10:48.456355",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "5"
+        },
+        "performance": {
+            "ROI": "2.18%",
+            "Sharpe ratio": "1.15",
+            "Sortino ratio": "11.04",
+            "Average pnl %": "2.45%",
+            "Volume": "18.06284 BNB"
+        }
+    },
+    {
+        "id": "xtfqncm6",
+        "pair": "BNB-OMNI",
+        "exchange": "binance",
+        "from": 1720908000000,
+        "to": 1721512800000,
+        "timestamp": "2024-07-21T11:58:29.707027",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "5"
+        },
+        "performance": {
+            "ROI": "2%",
+            "Sharpe ratio": "1.08",
+            "Sortino ratio": "19.7",
+            "Average pnl %": "2.02%",
+            "Volume": "24.238685 BNB"
         }
     }
 ]
