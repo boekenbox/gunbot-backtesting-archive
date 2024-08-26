@@ -17,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'  
+          python-version: '3.x'  # Replace with the Python version you need (e.g., '3.9')
 
       - name: Install dependencies
         run: |
@@ -25,13 +25,13 @@ jobs:
 
       - name: Run Python script
         run: python create_index.py
-
+        
       - name: Commit and push changes
         env:
-          TOKEN: ${{ secrets.ACTION_PAT }}  
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the built-in GITHUB_TOKEN
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add index.json
           git commit -m "Update index.json"
-          git push https://x-access-token:${TOKEN}@github.com/boekenbox/gunbot-backtesting-archive.git HEAD:main
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/boekenbox/gunbot-backtesting-archive.git HEAD:main
