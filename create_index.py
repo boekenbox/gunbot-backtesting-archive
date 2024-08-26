@@ -2,7 +2,7 @@ import os
 import json
 from datetime import datetime
 
-source_dir = './test'  # Adjust this path to the location of your JSON files in the repo
+source_dir = './tests'  # Adjust this path to the location of your JSON files in the repo
 output_file = './index.json'  # The root folder in the main branch
 
 # Function to extract required data from each JSON file
