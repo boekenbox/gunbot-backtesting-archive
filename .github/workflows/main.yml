@@ -25,11 +25,13 @@ jobs:
 
       - name: Run Python script
         run: python create_index.py
-        
+
       - name: Commit and push changes
+        env:
+          TOKEN: ${{ secrets.ACTION_PAT }}  
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add index.json
           git commit -m "Update index.json"
-          git push https://x-access-token:${{ secrets.ACTION_PAT }}@github.com/boekenbox/gunbot-backtesting-archive.git HEAD:main
+          git push https://x-access-token:${TOKEN}@github.com/boekenbox/gunbot-backtesting-archive.git HEAD:main
