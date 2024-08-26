@@ -31,6 +31,7 @@ If GitHub seems too complicated, don't worry! Join our Telegram group and share 
 
 ## Repository Structure
 
-- Flat structure, main folder contains all the JSON backtesting report files contributed by the community.
+- /tests folder contains all the JSON backtesting report files contributed by the community.
+- other folders contain tests for specific leaderboards
 
 
