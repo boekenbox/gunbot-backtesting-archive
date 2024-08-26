@@ -1,5 +1,4 @@
 name: Generate Index
-
 on:
   push:
     branches:
@@ -13,6 +12,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.ACTION_PAT }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -28,10 +30,10 @@ jobs:
         
       - name: Commit and push changes
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the built-in GITHUB_TOKEN
+          GITHUB_TOKEN: ${{ secrets.ACTION_PAT }}
         run: |
           git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.name "Gunbot Index Generator"
           git add index.json
           git commit -m "Update index.json"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/boekenbox/gunbot-backtesting-archive.git HEAD:main
+          git push "https://x-access-token:${{ secrets.ACTION_PAT }}@github.com/${{ github.repository }}.git" HEAD:main
