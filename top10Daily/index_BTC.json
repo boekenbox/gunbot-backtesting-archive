@@ -1,171 +1,191 @@
 [
     {
-        "id": "trh79z8b",
-        "pair": "BTC-CFX",
+        "id": "nc1m1cid",
+        "pair": "BTC-EIGEN",
         "exchange": "binance",
-        "from": 1727827200000,
-        "to": 1727913600000,
-        "timestamp": "2024-10-03T00:19:09.677341",
+        "from": 1727913600000,
+        "to": 1728000000000,
+        "timestamp": "2024-10-04T00:57:49.394747",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "1"
         },
         "performance": {
-            "ROI": "0.87%",
-            "Sharpe ratio": "21.36",
-            "Sortino ratio": "180.48",
-            "Average pnl %": "2.1%",
-            "Volume": "0.091216 BTC"
+            "ROI": "1.59%",
+            "Sharpe ratio": "2.61",
+            "Sortino ratio": "199.46",
+            "Average pnl %": "1.52%",
+            "Volume": "0.230753 BTC"
         }
     },
     {
-        "id": "ebtaxltt",
-        "pair": "BTC-UMA",
+        "id": "glouu0lu",
+        "pair": "BTC-REQ",
         "exchange": "binance",
-        "from": 1727827200000,
-        "to": 1727913600000,
-        "timestamp": "2024-10-03T00:35:09.155963",
+        "from": 1727913600000,
+        "to": 1728000000000,
+        "timestamp": "2024-10-04T00:24:35.694208",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "1"
         },
         "performance": {
-            "ROI": "0.73%",
+            "ROI": "1.54%",
+            "Sharpe ratio": "0.99",
+            "Sortino ratio": "260.21",
+            "Average pnl %": "15.81%",
+            "Volume": "0.017946 BTC"
+        }
+    },
+    {
+        "id": "dflpzeej",
+        "pair": "BTC-BLZ",
+        "exchange": "binance",
+        "from": 1727913600000,
+        "to": 1728000000000,
+        "timestamp": "2024-10-04T00:22:07.832216",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "1"
+        },
+        "performance": {
+            "ROI": "1.29%",
+            "Sharpe ratio": "3.82",
+            "Sortino ratio": "196.61",
+            "Average pnl %": "1.73%",
+            "Volume": "0.159984 BTC"
+        }
+    },
+    {
+        "id": "ce4vhjn9",
+        "pair": "BTC-BNX",
+        "exchange": "binance",
+        "from": 1727913600000,
+        "to": 1728000000000,
+        "timestamp": "2024-10-04T00:21:19.281890",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "1"
+        },
+        "performance": {
+            "ROI": "1.08%",
             "Sharpe ratio": "2.96",
-            "Sortino ratio": "309.25",
-            "Average pnl %": "2.92%",
-            "Volume": "0.064005 BTC"
+            "Sortino ratio": "244.64",
+            "Average pnl %": "1.66%",
+            "Volume": "0.119574 BTC"
         }
     },
     {
-        "id": "1o3bwp54",
-        "pair": "BTC-APT",
+        "id": "j0s8j4mf",
+        "pair": "BTC-MLN",
         "exchange": "binance",
-        "from": 1727827200000,
-        "to": 1727913600000,
-        "timestamp": "2024-10-03T00:53:18.155479",
+        "from": 1727913600000,
+        "to": 1728000000000,
+        "timestamp": "2024-10-04T00:54:28.155380",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "1"
         },
         "performance": {
-            "ROI": "0.73%",
-            "Sharpe ratio": "2.76",
-            "Sortino ratio": "178.7",
-            "Average pnl %": "1.36%",
-            "Volume": "0.114034 BTC"
+            "ROI": "0.92%",
+            "Sharpe ratio": "2.95",
+            "Sortino ratio": "214.26",
+            "Average pnl %": "1.8%",
+            "Volume": "0.116126 BTC"
         }
     },
     {
-        "id": "8u9h63zu",
-        "pair": "BTC-AXL",
-        "exchange": "binance",
-        "from": 1727827200000,
-        "to": 1727913600000,
-        "timestamp": "2024-10-03T00:30:53.134196",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "1"
-        },
-        "performance": {
-            "ROI": "0.57%",
-            "Sharpe ratio": "2.91",
-            "Sortino ratio": "117.71",
-            "Average pnl %": "1.16%",
-            "Volume": "0.129566 BTC"
-        }
-    },
-    {
-        "id": "29r26uag",
-        "pair": "BTC-PYR",
-        "exchange": "binance",
-        "from": 1727827200000,
-        "to": 1727913600000,
-        "timestamp": "2024-10-03T01:21:45.848264",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "1"
-        },
-        "performance": {
-            "ROI": "0.51%",
-            "Sharpe ratio": "2.65",
-            "Sortino ratio": "149.49",
-            "Average pnl %": "0.92%",
-            "Volume": "0.097011 BTC"
-        }
-    },
-    {
-        "id": "38sbp4we",
-        "pair": "BTC-TNSR",
-        "exchange": "binance",
-        "from": 1727827200000,
-        "to": 1727913600000,
-        "timestamp": "2024-10-03T00:54:31.633986",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "1"
-        },
-        "performance": {
-            "ROI": "0.48%",
-            "Sharpe ratio": "2.93",
-            "Sortino ratio": "158.26",
-            "Average pnl %": "1.95%",
-            "Volume": "0.08236 BTC"
-        }
-    },
-    {
-        "id": "dmimm0do",
-        "pair": "BTC-MANTA",
-        "exchange": "binance",
-        "from": 1727827200000,
-        "to": 1727913600000,
-        "timestamp": "2024-10-03T00:34:36.365737",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "1"
-        },
-        "performance": {
-            "ROI": "0.44%",
-            "Sharpe ratio": "2.92",
-            "Sortino ratio": "134.17",
-            "Average pnl %": "1.54%",
-            "Volume": "0.089689 BTC"
-        }
-    },
-    {
-        "id": "i10reaqm",
-        "pair": "BTC-BANANA",
-        "exchange": "binance",
-        "from": 1727827200000,
-        "to": 1727913600000,
-        "timestamp": "2024-10-03T01:06:01.404747",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "1"
-        },
-        "performance": {
-            "ROI": "0.42%",
-            "Sharpe ratio": "2.71",
-            "Sortino ratio": "106.28",
-            "Average pnl %": "1.07%",
-            "Volume": "0.111374 BTC"
-        }
-    },
-    {
-        "id": "nf7jxzjl",
+        "id": "teoae12g",
         "pair": "BTC-STX",
         "exchange": "binance",
-        "from": 1727827200000,
-        "to": 1727913600000,
-        "timestamp": "2024-10-03T01:10:13.082485",
+        "from": 1727913600000,
+        "to": 1728000000000,
+        "timestamp": "2024-10-04T00:34:33.129250",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "1"
+        },
+        "performance": {
+            "ROI": "0.62%",
+            "Sharpe ratio": "2.9",
+            "Sortino ratio": "119.58",
+            "Average pnl %": "0.88%",
+            "Volume": "0.140079 BTC"
+        }
+    },
+    {
+        "id": "e6nuzm7l",
+        "pair": "BTC-AAVE",
+        "exchange": "binance",
+        "from": 1727913600000,
+        "to": 1728000000000,
+        "timestamp": "2024-10-04T00:50:42.501848",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "1"
+        },
+        "performance": {
+            "ROI": "0.59%",
+            "Sharpe ratio": "2.6",
+            "Sortino ratio": "127.99",
+            "Average pnl %": "0.68%",
+            "Volume": "0.13354 BTC"
+        }
+    },
+    {
+        "id": "iqqwgdxu",
+        "pair": "BTC-APT",
+        "exchange": "binance",
+        "from": 1727913600000,
+        "to": 1728000000000,
+        "timestamp": "2024-10-04T00:26:15.556878",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "1"
+        },
+        "performance": {
+            "ROI": "0.58%",
+            "Sharpe ratio": "3.48",
+            "Sortino ratio": "154.59",
+            "Average pnl %": "1.57%",
+            "Volume": "0.093478 BTC"
+        }
+    },
+    {
+        "id": "glcnu2yv",
+        "pair": "BTC-FLUX",
+        "exchange": "binance",
+        "from": 1727913600000,
+        "to": 1728000000000,
+        "timestamp": "2024-10-04T00:52:34.871611",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "1"
+        },
+        "performance": {
+            "ROI": "0.54%",
+            "Sharpe ratio": "2.95",
+            "Sortino ratio": "229.92",
+            "Average pnl %": "1.59%",
+            "Volume": "0.063574 BTC"
+        }
+    },
+    {
+        "id": "8r803lcs",
+        "pair": "BTC-BANANA",
+        "exchange": "binance",
+        "from": 1727913600000,
+        "to": 1728000000000,
+        "timestamp": "2024-10-04T00:18:29.617752",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
@@ -173,30 +193,10 @@
         },
         "performance": {
             "ROI": "0.42%",
-            "Sharpe ratio": "3.04",
-            "Sortino ratio": "73.59",
-            "Average pnl %": "0.85%",
-            "Volume": "0.146378 BTC"
-        }
-    },
-    {
-        "id": "jifnj8ro",
-        "pair": "BTC-OM",
-        "exchange": "binance",
-        "from": 1727827200000,
-        "to": 1727913600000,
-        "timestamp": "2024-10-03T00:39:11.020633",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "1"
-        },
-        "performance": {
-            "ROI": "0.38%",
-            "Sharpe ratio": "2.76",
-            "Sortino ratio": "90.17",
-            "Average pnl %": "0.71%",
-            "Volume": "0.115776 BTC"
+            "Sharpe ratio": "2.92",
+            "Sortino ratio": "121.72",
+            "Average pnl %": "0.91%",
+            "Volume": "0.092343 BTC"
         }
     }
 ]
