@@ -1,71 +1,91 @@
 [
     {
-        "id": "2k06ecbs",
-        "pair": "ETH-AAVE",
-        "exchange": "binance",
-        "from": 1730246400000,
-        "to": 1730851200000,
-        "timestamp": "2024-11-06T07:54:42.009036",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "5"
-        },
-        "performance": {
-            "ROI": "2.44%",
-            "Sharpe ratio": "0.96",
-            "Sortino ratio": "25.21",
-            "Average pnl %": "1.38%",
-            "Volume": "3.959175 ETH"
-        }
-    },
-    {
-        "id": "22bqz2dv",
-        "pair": "ETH-RLC",
-        "exchange": "binance",
-        "from": 1730246400000,
-        "to": 1730851200000,
-        "timestamp": "2024-11-06T08:22:18.831756",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "5"
-        },
-        "performance": {
-            "ROI": "2.21%",
-            "Sharpe ratio": "1.82",
-            "Sortino ratio": "12.95",
-            "Average pnl %": "1.47%",
-            "Volume": "5.880082 ETH"
-        }
-    },
-    {
-        "id": "ksi25xrm",
-        "pair": "ETH-ICP",
-        "exchange": "binance",
-        "from": 1730246400000,
-        "to": 1730851200000,
-        "timestamp": "2024-11-06T08:08:52.950058",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "5"
-        },
-        "performance": {
-            "ROI": "1.75%",
-            "Sharpe ratio": "1.56",
-            "Sortino ratio": "68.85",
-            "Average pnl %": "1.22%",
-            "Volume": "5.467755 ETH"
-        }
-    },
-    {
-        "id": "e3hwia1l",
+        "id": "hx4o5vyb",
         "pair": "ETH-UNI",
         "exchange": "binance",
-        "from": 1730246400000,
-        "to": 1730851200000,
-        "timestamp": "2024-11-06T07:07:41.388147",
+        "from": 1730332800000,
+        "to": 1730937600000,
+        "timestamp": "2024-11-07T07:26:19.786043",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "5"
+        },
+        "performance": {
+            "ROI": "2.79%",
+            "Sharpe ratio": "2.23",
+            "Sortino ratio": "60.22",
+            "Average pnl %": "1.94%",
+            "Volume": "5.086588 ETH"
+        }
+    },
+    {
+        "id": "2o45azab",
+        "pair": "ETH-INJ",
+        "exchange": "binance",
+        "from": 1730332800000,
+        "to": 1730937600000,
+        "timestamp": "2024-11-07T08:10:27.501107",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "5"
+        },
+        "performance": {
+            "ROI": "2.56%",
+            "Sharpe ratio": "1.03",
+            "Sortino ratio": "72.93",
+            "Average pnl %": "1.31%",
+            "Volume": "5.49115 ETH"
+        }
+    },
+    {
+        "id": "7wyg0p5k",
+        "pair": "ETH-AAVE",
+        "exchange": "binance",
+        "from": 1730332800000,
+        "to": 1730937600000,
+        "timestamp": "2024-11-07T06:50:33.384604",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "5"
+        },
+        "performance": {
+            "ROI": "1.98%",
+            "Sharpe ratio": "0.89",
+            "Sortino ratio": "5.1",
+            "Average pnl %": "1.06%",
+            "Volume": "4.220759 ETH"
+        }
+    },
+    {
+        "id": "jf303764",
+        "pair": "ETH-ZEC",
+        "exchange": "binance",
+        "from": 1730332800000,
+        "to": 1730937600000,
+        "timestamp": "2024-11-07T06:59:30.088458",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "5"
+        },
+        "performance": {
+            "ROI": "1.62%",
+            "Sharpe ratio": "1.22",
+            "Sortino ratio": "70.07",
+            "Average pnl %": "1.49%",
+            "Volume": "4.692538 ETH"
+        }
+    },
+    {
+        "id": "81h057s8",
+        "pair": "ETH-RLC",
+        "exchange": "binance",
+        "from": 1730332800000,
+        "to": 1730937600000,
+        "timestamp": "2024-11-07T08:42:37.698026",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
@@ -73,130 +93,110 @@
         },
         "performance": {
             "ROI": "1.59%",
-            "Sharpe ratio": "1.03",
-            "Sortino ratio": "54.07",
-            "Average pnl %": "1.61%",
-            "Volume": "4.930857 ETH"
+            "Sharpe ratio": "1.1",
+            "Sortino ratio": "10.94",
+            "Average pnl %": "1.39%",
+            "Volume": "5.27469 ETH"
         }
     },
     {
-        "id": "177fnm23",
-        "pair": "ETH-SLP",
+        "id": "nfoq2k4y",
+        "pair": "ETH-ICP",
         "exchange": "binance",
-        "from": 1730246400000,
-        "to": 1730851200000,
-        "timestamp": "2024-11-06T07:53:38.900589",
+        "from": 1730332800000,
+        "to": 1730937600000,
+        "timestamp": "2024-11-07T07:58:36.734994",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "5"
         },
         "performance": {
-            "ROI": "1.17%",
-            "Sharpe ratio": "0.97",
-            "Sortino ratio": "161.85",
-            "Average pnl %": "2.84%",
-            "Volume": "2.010708 ETH"
+            "ROI": "1.44%",
+            "Sharpe ratio": "0.84",
+            "Sortino ratio": "91.23",
+            "Average pnl %": "1.06%",
+            "Volume": "6.075051 ETH"
         }
     },
     {
-        "id": "va9uodxs",
-        "pair": "ETH-INJ",
+        "id": "4qcp2rvv",
+        "pair": "ETH-GALA",
         "exchange": "binance",
-        "from": 1730246400000,
-        "to": 1730851200000,
-        "timestamp": "2024-11-06T07:21:03.313787",
+        "from": 1730332800000,
+        "to": 1730937600000,
+        "timestamp": "2024-11-07T08:12:03.717799",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "5"
         },
         "performance": {
-            "ROI": "1.11%",
-            "Sharpe ratio": "1.39",
-            "Sortino ratio": "42.21",
-            "Average pnl %": "0.89%",
-            "Volume": "5.550582 ETH"
+            "ROI": "0.99%",
+            "Sharpe ratio": "1.43",
+            "Sortino ratio": "4.32",
+            "Average pnl %": "1.26%",
+            "Volume": "4.144674 ETH"
         }
     },
     {
-        "id": "1sv7pqgw",
+        "id": "kf8f0h1u",
+        "pair": "ETH-ATOM",
+        "exchange": "binance",
+        "from": 1730332800000,
+        "to": 1730937600000,
+        "timestamp": "2024-11-07T08:24:15.796067",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "5"
+        },
+        "performance": {
+            "ROI": "0.95%",
+            "Sharpe ratio": "1.15",
+            "Sortino ratio": "23.02",
+            "Average pnl %": "0.79%",
+            "Volume": "4.609526 ETH"
+        }
+    },
+    {
+        "id": "97r1zbm7",
+        "pair": "ETH-XRP",
+        "exchange": "binance",
+        "from": 1730332800000,
+        "to": 1730937600000,
+        "timestamp": "2024-11-07T07:19:33.649114",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "5"
+        },
+        "performance": {
+            "ROI": "0.92%",
+            "Sharpe ratio": "1.51",
+            "Sortino ratio": "8.23",
+            "Average pnl %": "0.91%",
+            "Volume": "4.88541 ETH"
+        }
+    },
+    {
+        "id": "q9hk9nzv",
         "pair": "ETH-ADA",
         "exchange": "binance",
-        "from": 1730246400000,
-        "to": 1730851200000,
-        "timestamp": "2024-11-06T08:50:06.208534",
+        "from": 1730332800000,
+        "to": 1730937600000,
+        "timestamp": "2024-11-07T07:32:49.050850",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "5"
         },
         "performance": {
-            "ROI": "1.1%",
-            "Sharpe ratio": "1.46",
-            "Sortino ratio": "29.23",
-            "Average pnl %": "0.82%",
-            "Volume": "6.190704 ETH"
-        }
-    },
-    {
-        "id": "kokky44r",
-        "pair": "ETH-HOT",
-        "exchange": "binance",
-        "from": 1730246400000,
-        "to": 1730851200000,
-        "timestamp": "2024-11-06T07:40:48.254139",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "5"
-        },
-        "performance": {
-            "ROI": "1.07%",
-            "Sharpe ratio": "1.46",
-            "Sortino ratio": "92.01",
-            "Average pnl %": "1.14%",
-            "Volume": "2.780797 ETH"
-        }
-    },
-    {
-        "id": "bfq61ixl",
-        "pair": "ETH-EGLD",
-        "exchange": "binance",
-        "from": 1730246400000,
-        "to": 1730851200000,
-        "timestamp": "2024-11-06T08:29:36.114847",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "5"
-        },
-        "performance": {
-            "ROI": "0.96%",
-            "Sharpe ratio": "1.44",
-            "Sortino ratio": "4.84",
-            "Average pnl %": "0.78%",
-            "Volume": "5.589635 ETH"
-        }
-    },
-    {
-        "id": "struvuv2",
-        "pair": "ETH-DENT",
-        "exchange": "binance",
-        "from": 1730246400000,
-        "to": 1730851200000,
-        "timestamp": "2024-11-06T07:47:08.233826",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "5"
-        },
-        "performance": {
-            "ROI": "0.87%",
-            "Sharpe ratio": "1.05",
-            "Sortino ratio": "100.29",
-            "Average pnl %": "2.08%",
-            "Volume": "1.91056 ETH"
+            "ROI": "0.83%",
+            "Sharpe ratio": "1.03",
+            "Sortino ratio": "10.76",
+            "Average pnl %": "0.95%",
+            "Volume": "4.178803 ETH"
         }
     }
 ]
