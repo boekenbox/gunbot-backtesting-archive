@@ -1,151 +1,111 @@
 [
     {
-        "id": "znuuimcc",
-        "pair": "USDT-AVA",
-        "exchange": "binance",
-        "from": 1734048000000,
-        "to": 1734134400000,
-        "timestamp": "2024-12-14T04:15:59.526403",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "1"
-        },
-        "performance": {
-            "ROI": "3.48%",
-            "Sharpe ratio": "2.99",
-            "Sortino ratio": "1070.6",
-            "Average pnl %": "10.46%",
-            "Volume": "4438.88 USDT"
-        }
-    },
-    {
-        "id": "i5czqeym",
-        "pair": "USDT-HARD",
-        "exchange": "binance",
-        "from": 1734048000000,
-        "to": 1734134400000,
-        "timestamp": "2024-12-14T04:02:22.401538",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "1"
-        },
-        "performance": {
-            "ROI": "3.28%",
-            "Sharpe ratio": "2.68",
-            "Sortino ratio": "615.67",
-            "Average pnl %": "2.61%",
-            "Volume": "7694.68 USDT"
-        }
-    },
-    {
-        "id": "ffvzewhv",
+        "id": "dd27n0wb",
         "pair": "USDT-UTK",
         "exchange": "binance",
-        "from": 1734048000000,
-        "to": 1734134400000,
-        "timestamp": "2024-12-14T04:56:15.303755",
+        "from": 1734134400000,
+        "to": 1734220800000,
+        "timestamp": "2024-12-15T03:18:19.892232",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "1"
         },
         "performance": {
-            "ROI": "3.03%",
-            "Sharpe ratio": "2.74",
-            "Sortino ratio": "720.86",
-            "Average pnl %": "5.49%",
-            "Volume": "5989.29 USDT"
+            "ROI": "5.06%",
+            "Sharpe ratio": "3.78",
+            "Sortino ratio": "1059.95",
+            "Average pnl %": "8.03%",
+            "Volume": "5906.31 USDT"
         }
     },
     {
-        "id": "u286lzd6",
-        "pair": "USDT-DEGO",
+        "id": "mcm8tc6k",
+        "pair": "USDT-ENA",
         "exchange": "binance",
-        "from": 1734048000000,
-        "to": 1734134400000,
-        "timestamp": "2024-12-14T03:43:38.584479",
+        "from": 1734134400000,
+        "to": 1734220800000,
+        "timestamp": "2024-12-15T03:25:19.230265",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "1"
         },
         "performance": {
-            "ROI": "2.46%",
-            "Sharpe ratio": "2.99",
-            "Sortino ratio": "593.3",
-            "Average pnl %": "4.04%",
-            "Volume": "5640.58 USDT"
+            "ROI": "2.39%",
+            "Sharpe ratio": "2.98",
+            "Sortino ratio": "664.87",
+            "Average pnl %": "3.8%",
+            "Volume": "4898.95 USDT"
         }
     },
     {
-        "id": "cygak9wy",
+        "id": "lonv9vof",
+        "pair": "USDT-VELODROME",
+        "exchange": "binance",
+        "from": 1734134400000,
+        "to": 1734220800000,
+        "timestamp": "2024-12-15T04:20:47.412498",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "1"
+        },
+        "performance": {
+            "ROI": "2.19%",
+            "Sharpe ratio": "2.96",
+            "Sortino ratio": "248.33",
+            "Average pnl %": "1.64%",
+            "Volume": "11948.46 USDT"
+        }
+    },
+    {
+        "id": "ss1fff01",
         "pair": "USDT-MDT",
         "exchange": "binance",
-        "from": 1734048000000,
-        "to": 1734134400000,
-        "timestamp": "2024-12-14T03:30:20.548761",
+        "from": 1734134400000,
+        "to": 1734220800000,
+        "timestamp": "2024-12-15T04:26:18.377893",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "1"
         },
         "performance": {
-            "ROI": "1.6%",
-            "Sharpe ratio": "2.98",
-            "Sortino ratio": "480",
-            "Average pnl %": "2.92%",
-            "Volume": "4548.91 USDT"
+            "ROI": "2.05%",
+            "Sharpe ratio": "2.74",
+            "Sortino ratio": "525.06",
+            "Average pnl %": "3.91%",
+            "Volume": "5569.55 USDT"
         }
     },
     {
-        "id": "71n0lyw0",
-        "pair": "USDT-PDA",
+        "id": "mzvtd9do",
+        "pair": "USDT-CVC",
         "exchange": "binance",
-        "from": 1734048000000,
-        "to": 1734134400000,
-        "timestamp": "2024-12-14T03:53:44.366820",
+        "from": 1734134400000,
+        "to": 1734220800000,
+        "timestamp": "2024-12-15T03:53:49.005817",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "1"
         },
         "performance": {
-            "ROI": "1.46%",
-            "Sharpe ratio": "2.76",
-            "Sortino ratio": "358.37",
-            "Average pnl %": "3.4%",
-            "Volume": "5764.31 USDT"
+            "ROI": "1.57%",
+            "Sharpe ratio": "3.03",
+            "Sortino ratio": "385.06",
+            "Average pnl %": "2.35%",
+            "Volume": "5492.49 USDT"
         }
     },
     {
-        "id": "fhkmnjwq",
-        "pair": "USDT-FIRO",
+        "id": "jdvff4a9",
+        "pair": "USDT-FLOKI",
         "exchange": "binance",
-        "from": 1734048000000,
-        "to": 1734134400000,
-        "timestamp": "2024-12-14T03:32:18.627607",
-        "settings": {
-            "BUY_METHOD": "channelmaestro",
-            "SELL_METHOD": "channelmaestro",
-            "PERIOD": "1"
-        },
-        "performance": {
-            "ROI": "1.24%",
-            "Sharpe ratio": "2.95",
-            "Sortino ratio": "207.52",
-            "Average pnl %": "1.5%",
-            "Volume": "8075.37 USDT"
-        }
-    },
-    {
-        "id": "mbv4y7on",
-        "pair": "USDT-BB",
-        "exchange": "binance",
-        "from": 1734048000000,
-        "to": 1734134400000,
-        "timestamp": "2024-12-14T04:33:37.069995",
+        "from": 1734134400000,
+        "to": 1734220800000,
+        "timestamp": "2024-12-15T03:23:00.869265",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
@@ -153,39 +113,39 @@
         },
         "performance": {
             "ROI": "1.24%",
-            "Sharpe ratio": "2.97",
-            "Sortino ratio": "345.18",
-            "Average pnl %": "3.45%",
-            "Volume": "4883.63 USDT"
+            "Sharpe ratio": "2.6",
+            "Sortino ratio": "143.06",
+            "Average pnl %": "1.22%",
+            "Volume": "12402.56 USDT"
         }
     },
     {
-        "id": "gofvzdv9",
-        "pair": "USDT-AUCTION",
+        "id": "s2oujatg",
+        "pair": "USDT-DATA",
         "exchange": "binance",
-        "from": 1734048000000,
-        "to": 1734134400000,
-        "timestamp": "2024-12-14T04:29:13.431101",
+        "from": 1734134400000,
+        "to": 1734220800000,
+        "timestamp": "2024-12-15T03:29:46.297287",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
             "PERIOD": "1"
         },
         "performance": {
-            "ROI": "1.04%",
-            "Sharpe ratio": "2.93",
-            "Sortino ratio": "156.42",
-            "Average pnl %": "1.42%",
-            "Volume": "8997.87 USDT"
+            "ROI": "1.24%",
+            "Sharpe ratio": "3.02",
+            "Sortino ratio": "340.04",
+            "Average pnl %": "2.67%",
+            "Volume": "4942.46 USDT"
         }
     },
     {
-        "id": "2klt82cp",
-        "pair": "USDT-COS",
+        "id": "wxwjafzt",
+        "pair": "USDT-VIB",
         "exchange": "binance",
-        "from": 1734048000000,
-        "to": 1734134400000,
-        "timestamp": "2024-12-14T04:18:15.274377",
+        "from": 1734134400000,
+        "to": 1734220800000,
+        "timestamp": "2024-12-15T04:01:32.996159",
         "settings": {
             "BUY_METHOD": "channelmaestro",
             "SELL_METHOD": "channelmaestro",
@@ -193,10 +153,50 @@
         },
         "performance": {
             "ROI": "1.01%",
-            "Sharpe ratio": "2.59",
-            "Sortino ratio": "201.31",
-            "Average pnl %": "1.89%",
-            "Volume": "7337.47 USDT"
+            "Sharpe ratio": "2.96",
+            "Sortino ratio": "279.19",
+            "Average pnl %": "2.2%",
+            "Volume": "4929.37 USDT"
+        }
+    },
+    {
+        "id": "s3756gr6",
+        "pair": "USDT-AERGO",
+        "exchange": "binance",
+        "from": 1734134400000,
+        "to": 1734220800000,
+        "timestamp": "2024-12-15T03:57:46.561528",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "1"
+        },
+        "performance": {
+            "ROI": "0.98%",
+            "Sharpe ratio": "2.76",
+            "Sortino ratio": "153.65",
+            "Average pnl %": "1.13%",
+            "Volume": "8850.74 USDT"
+        }
+    },
+    {
+        "id": "nby7nwb2",
+        "pair": "USDT-SLF",
+        "exchange": "binance",
+        "from": 1734134400000,
+        "to": 1734220800000,
+        "timestamp": "2024-12-15T04:22:04.236054",
+        "settings": {
+            "BUY_METHOD": "channelmaestro",
+            "SELL_METHOD": "channelmaestro",
+            "PERIOD": "1"
+        },
+        "performance": {
+            "ROI": "0.85%",
+            "Sharpe ratio": "2.62",
+            "Sortino ratio": "153.87",
+            "Average pnl %": "1.28%",
+            "Volume": "7906.95 USDT"
         }
     }
 ]
