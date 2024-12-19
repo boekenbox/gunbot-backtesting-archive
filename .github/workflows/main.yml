@@ -1,4 +1,5 @@
 name: Generate Index
+
 on:
   push:
     branches:
@@ -9,7 +10,10 @@ jobs:
   create_index:
     if: "!contains(github.event.head_commit.message, 'Update index.json')"  # Skip if the commit message is from this action
     runs-on: ubuntu-latest
-    
+    env:
+      INDEX_FILE: index.json
+      SOURCE_DIR: ./tests
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -20,7 +24,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'  # Replace with the Python version you need (e.g., '3.9')
+          python-version: '3.x'  # Specify the required Python version
 
       - name: Install dependencies
         run: |
@@ -28,13 +32,14 @@ jobs:
 
       - name: Run Python script
         run: python create_index.py
-        
+
       - name: Commit and push changes
+        if: success() && steps.create_index.outputs.changed == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_PAT }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Gunbot Index Generator"
-          git add index.json
+          git add $INDEX_FILE
           git commit -m "Update index.json"
           git push "https://x-access-token:${{ secrets.ACTION_PAT }}@github.com/${{ github.repository }}.git" HEAD:main
