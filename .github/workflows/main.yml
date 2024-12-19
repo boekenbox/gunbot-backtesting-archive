@@ -11,72 +11,9 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'Update index.json')"
     runs-on: ubuntu-latest
     env:
-      INDEX_FILE: index.json
-      SOURCE_DIR: ./tests
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the default GitHub token
 
     steps:
-      - name: Checkout repository (index.json only)
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
-          path: repo
-          # Initial sparse checkout to fetch only index.json
-          sparse-paths: |
-            index.json
-
-      - name: Set up Git for sparse checkout
-        run: |
-          cd repo
-          git config core.sparseCheckout true
-
-      - name: Fetch list of JSON files
-        id: list_files
-        run: |
-          cd repo
-          # Load existing index.json
-          if [ -f "index.json" ]; then
-            echo "Loading existing index.json..."
-            jq -r '.[].id' index.json > indexed_ids.txt
-          else
-            echo "No existing index.json found."
-            touch indexed_ids.txt
-          fi
-
-          # List all JSON files in the tests directory
-          find tests -name '*.json' > all_json_files.txt
-
-          # Determine which files need to be processed
-          > files_to_fetch.txt
-          while IFS= read -r file; do
-            # Extract the ID from the file content
-            id=$(jq -r '.id' "$file" 2>/dev/null || echo "")
-            if [ -n "$id" ] && ! grep -qx "$id" indexed_ids.txt; then
-              echo "$file" >> files_to_fetch.txt
-            fi
-          done < all_json_files.txt
-
-          # Set output with the list of files to fetch
-          if [ -s "files_to_fetch.txt" ]; then
-            echo "Files to fetch:"
-            cat files_to_fetch.txt
-            FILES=$(paste -sd "\n" files_to_fetch.txt)
-            echo "::set-output name=files::$FILES"
-          else
-            echo "No new or updated files to fetch."
-            echo "::set-output name=files::"
-          fi
-
-      - name: Initialize sparse checkout for new files
-        if: steps.list_files.outputs.files != ''
-        run: |
-          cd repo
-          # Overwrite sparse-checkout with new files
-          echo "" > .git/info/sparse-checkout
-          while IFS= read -r file; do
-            echo "$file" >> .git/info/sparse-checkout
-          done < files_to_fetch.txt
-          git pull origin main
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -84,34 +21,33 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd repo
           python -m pip install --upgrade pip
-          pip install -r requirements.txt --no-cache-dir
+          pip install requests
 
       - name: Run Python script
         id: run_script
-        working-directory: repo
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python create_index.py
-        # Ensure minimal output
+        # The script will handle downloading files, processing, and indicating if index.json was changed
 
       - name: Commit and push changes
         if: steps.run_script.outputs.changed == 'true'
         env:
-          GITHUB_TOKEN: ${{ secrets.ACTION_PAT }}
+          ACTION_PAT: ${{ secrets.ACTION_PAT }}
         run: |
-          cd repo
+          # Configure Git
           git config --local user.email "action@github.com"
           git config --local user.name "Gunbot Index Generator"
+
+          # Initialize a new Git repository
+          git init
+          git remote add origin "https://x-access-token:${{ secrets.ACTION_PAT }}@github.com/${{ github.repository }}.git"
+
+          # Add and commit index.json
           git add index.json
           git commit -m "Update index.json"
-          git push "https://x-access-token:${{ secrets.ACTION_PAT }}@github.com/${{ github.repository }}.git" HEAD:main
 
-      - name: Check disk usage after processing
-        run: df -h
-
-      - name: Clean up workspace
-        if: always()
-        run: |
-          rm -rf repo
-          rm -rf $HOME/.cache/pip
+          # Push the changes
+          git push -u origin main
