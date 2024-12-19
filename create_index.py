@@ -2,18 +2,27 @@ import os
 import json
 from datetime import datetime
 
-source_dir = './tests'  # Adjust this path to the location of your JSON files in the repo
-output_file = './index.json'  # The root folder in the main branch
+source_dir = './tests'  # Directory containing JSON files
+output_file = './index.json'  # Path to the index file
 
-# Function to extract required data from each JSON file
+def load_existing_index(file_path):
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as f:
+            return {entry['id']: entry for entry in json.load(f)}
+    return {}
+
+def save_index(index_data, file_path):
+    with open(file_path, 'w') as f:
+        json.dump(list(index_data.values()), f, indent=4)
+
 def extract_data(file_path, filename):
     with open(file_path, 'r') as file:
         data = json.load(file)
-    
+
     # Get the last modified time
     last_modified_time = os.path.getmtime(file_path)
     timestamp = datetime.fromtimestamp(last_modified_time).isoformat()
-    
+
     # Extracting data
     entry = {
         "id": data.get("id"),
@@ -35,28 +44,63 @@ def extract_data(file_path, filename):
             "Volume": data.get("performance", {}).get("Volume")
         }
     }
-    
+
     # Check if filename contains more than just an ID
     parts = filename.split('-')
     if len(parts) > 2:
         entry['filename'] = filename
-    
+
     return entry
 
-# Collecting all JSON files in the directory
-json_files = [f for f in os.listdir(source_dir) if f.endswith('.json')]
+def main():
+    existing_index = load_existing_index(output_file)
+    updated = False
 
-# List to store all extracted data
-index_data = []
+    # Collect all JSON files in the directory
+    json_files = [f for f in os.listdir(source_dir) if f.endswith('.json')]
 
-# Extracting data from each JSON file
-for json_file in json_files:
-    file_path = os.path.join(source_dir, json_file)
-    entry = extract_data(file_path, json_file)
-    index_data.append(entry)
+    for json_file in json_files:
+        file_path = os.path.join(source_dir, json_file)
+        file_id = None
 
-# Writing the final data to the output JSON file
-with open(output_file, 'w') as file:
-    json.dump(index_data, file, indent=4)
+        # Extract ID to check if it's already in index
+        try:
+            with open(file_path, 'r') as f:
+                data = json.load(f)
+                file_id = data.get("id")
+        except json.JSONDecodeError:
+            print(f"Skipping invalid JSON file: {json_file}")
+            continue
 
-print(f"Index file created at {output_file}")
+        if not file_id:
+            print(f"Skipping file with no ID: {json_file}")
+            continue
+
+        # Get last modified time
+        last_modified_time = os.path.getmtime(file_path)
+        timestamp = datetime.fromtimestamp(last_modified_time).isoformat()
+
+        # Check if the file is already indexed and up-to-date
+        if file_id in existing_index:
+            if existing_index[file_id]['timestamp'] >= timestamp:
+                continue  # No update needed
+
+        # Extract and update the index
+        entry = extract_data(file_path, json_file)
+        existing_index[file_id] = entry
+        updated = True
+        print(f"Indexed/Updated: {json_file}")
+
+    if updated:
+        save_index(existing_index, output_file)
+        print(f"Index file updated at {output_file}")
+        # Set an environment variable or output to indicate changes
+        with open(os.environ.get('GITHUB_OUTPUT', 'output.txt'), 'a') as f:
+            f.write("changed=true\n")
+    else:
+        print("No changes to index.json")
+        with open(os.environ.get('GITHUB_OUTPUT', 'output.txt'), 'a') as f:
+            f.write("changed=false\n")
+
+if __name__ == "__main__":
+    main()
