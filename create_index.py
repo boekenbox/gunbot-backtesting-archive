@@ -57,7 +57,11 @@ def main():
     updated = False
 
     # Collect all JSON files in the directory
-    json_files = [f for f in os.listdir(source_dir) if f.endswith('.json')]
+    try:
+        json_files = [f for f in os.listdir(source_dir) if f.endswith('.json')]
+    except FileNotFoundError:
+        print(f"Source directory '{source_dir}' not found.")
+        json_files = []
 
     for json_file in json_files:
         file_path = os.path.join(source_dir, json_file)
@@ -86,15 +90,19 @@ def main():
                 continue  # No update needed
 
         # Extract and update the index
-        entry = extract_data(file_path, json_file)
-        existing_index[file_id] = entry
-        updated = True
-        print(f"Indexed/Updated: {json_file}")
+        try:
+            entry = extract_data(file_path, json_file)
+            existing_index[file_id] = entry
+            updated = True
+            print(f"Indexed/Updated: {json_file}")
+        except Exception as e:
+            print(f"Error processing {json_file}: {e}")
+            continue
 
     if updated:
         save_index(existing_index, output_file)
         print(f"Index file updated at {output_file}")
-        # Set an environment variable or output to indicate changes
+        # Indicate that changes were made
         with open(os.environ.get('GITHUB_OUTPUT', 'output.txt'), 'a') as f:
             f.write("changed=true\n")
     else:
