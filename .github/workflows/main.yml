@@ -1,59 +1,140 @@
-name: Generate Index
+import os
+import json
+import requests
+from datetime import datetime
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+# Constants
+REPO_OWNER, REPO_NAME = os.getenv('GITHUB_REPOSITORY').split('/')
+BRANCH = 'main'
+INDEX_FILE_PATH = 'index.json'
+TESTS_DIR = 'tests'
 
-jobs:
-  create_index:
-    if: "!contains(github.event.head_commit.message, 'Update index.json')"
-    runs-on: ubuntu-latest
+# GitHub API URL
+API_URL = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents"
 
-    steps:
-      # 1. Set up Python environment
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'  # Specify the required Python version
+# Authentication
+GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
+headers = {
+    'Authorization': f'token {GITHUB_TOKEN}',
+    'Accept': 'application/vnd.github.v3.raw'
+}
 
-      # 2. Install necessary Python packages
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
+def get_file_content(path):
+    """Fetch the content of a file from GitHub."""
+    url = f"{API_URL}/{path}?ref={BRANCH}"
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        return response.text
+    elif response.status_code == 404:
+        return None
+    else:
+        response.raise_for_status()
 
-      # 3. Run the Python script to update index.json
-      - name: Run Python script
-        id: run_script
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          python create_index.py
+def list_json_files(directory):
+    """List all JSON files in the specified directory."""
+    url = f"{API_URL}/{directory}?ref={BRANCH}"
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+    files = response.json()
+    json_files = [file['name'] for file in files if file['type'] == 'file' and file['name'].endswith('.json')]
+    return json_files
 
-      # 4. Commit and push changes if index.json was updated
-      - name: Commit and push changes
-        if: steps.run_script.outputs.changed == 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # Configure Git
-          git config --global user.email "action@github.com"
-          git config --global user.name "GitHub Action"
+def update_index(existing_index, new_entries):
+    """Update the existing index with new entries."""
+    updated = False
+    for entry in new_entries:
+        file_id = entry.get('id')
+        if file_id and file_id not in existing_index:
+            existing_index[file_id] = entry
+            updated = True
+            print(f"Indexed: {entry.get('filename', 'Unknown')}")
+    return existing_index, updated
 
-          # Clone the repository with minimal data
-          git clone --depth=1 https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git repo
+def extract_data(file_content, filename):
+    """Extract required data from JSON content."""
+    data = json.loads(file_content)
+    timestamp = datetime.utcnow().isoformat()
 
-          # Navigate to the repository
-          cd repo
+    entry = {
+        "id": data.get("id"),
+        "pair": data.get("pair"),
+        "exchange": data.get("exchange"),
+        "from": data.get("from"),
+        "to": data.get("to"),
+        "timestamp": timestamp,
+        "settings": {
+            "BUY_METHOD": data.get("settings", {}).get("BUY_METHOD", data.get("strategySettings", {}).get("BUY_METHOD")),
+            "SELL_METHOD": data.get("settings", {}).get("SELL_METHOD", data.get("strategySettings", {}).get("SELL_METHOD")),
+            "PERIOD": data.get("settings", {}).get("PERIOD", data.get("strategySettings", {}).get("PERIOD"))
+        },
+        "performance": {
+            "ROI": data.get("performance", {}).get("ROI"),
+            "Sharpe ratio": data.get("performance", {}).get("Sharpe ratio"),
+            "Sortino ratio": data.get("performance", {}).get("Sortino ratio"),
+            "Average pnl %": data.get("performance", {}).get("Average pnl %"),
+            "Volume": data.get("performance", {}).get("Volume")
+        }
+    }
 
-          # Replace the existing index.json with the updated one
-          cp ../index.json .
+    # Include filename if it has more than just an ID
+    if '-' in filename:
+        parts = filename.split('-')
+        if len(parts) > 2:
+            entry['filename'] = filename
 
-          # Check if index.json has changes
-          git add index.json
-          git commit -m "Update index.json" || echo "No changes to commit"
+    return entry
 
-          # Push the changes back to the main branch
-          git push origin main
+def main():
+    # Fetch existing index.json
+    index_content = get_file_content(INDEX_FILE_PATH)
+    if index_content:
+        index_data = json.loads(index_content)
+        existing_index = {entry['id']: entry for entry in index_data}
+    else:
+        existing_index = {}
+    
+    # List all JSON files in tests/
+    json_files = list_json_files(TESTS_DIR)
+    
+    # Determine which files are not yet indexed
+    new_entries = []
+    for filename in json_files:
+        file_path = f"{TESTS_DIR}/{filename}"
+        file_content = get_file_content(file_path)
+        if not file_content:
+            print(f"Failed to fetch {file_path}. Skipping.")
+            continue
+        try:
+            entry = extract_data(file_content, filename)
+            file_id = entry.get("id")
+            if not file_id:
+                print(f"No ID found in {filename}. Skipping.")
+                continue
+            if file_id in existing_index:
+                continue  # Already indexed
+            new_entries.append(entry)
+        except json.JSONDecodeError:
+            print(f"Invalid JSON in {filename}. Skipping.")
+            continue
+        except Exception as e:
+            print(f"Error processing {filename}: {e}")
+            continue
+
+    # Update index.json with new entries
+    updated_index, updated = update_index(existing_index, new_entries)
+    
+    if updated:
+        # Save the updated index.json locally
+        with open(INDEX_FILE_PATH, 'w') as f:
+            json.dump(list(updated_index.values()), f, indent=4)
+        print("Index file updated.")
+        # Indicate that changes were made
+        with open(os.environ.get('GITHUB_OUTPUT', 'output.txt'), 'a') as f:
+            f.write("changed=true\n")
+    else:
+        print("No changes to index.json.")
+        with open(os.environ.get('GITHUB_OUTPUT', 'output.txt'), 'a') as f:
+            f.write("changed=false\n")
+
+if __name__ == "__main__":
+    main()
