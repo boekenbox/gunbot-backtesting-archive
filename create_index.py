@@ -1,29 +1,94 @@
 import os
 import json
+import requests
+import base64
 from datetime import datetime
 
-source_dir = './tests'  # Directory containing JSON files
-output_file = './index.json'  # Path to the index file
+# GitHub repository details
+REPO_OWNER = os.getenv('GITHUB_REPOSITORY').split('/')[0]
+REPO_NAME = os.getenv('GITHUB_REPOSITORY').split('/')[1]
+BRANCH = 'main'
 
-def load_existing_index(file_path):
-    if os.path.exists(file_path):
-        with open(file_path, 'r') as f:
-            return {entry['id']: entry for entry in json.load(f)}
-    return {}
+# GitHub API URL
+API_URL = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents"
 
-def save_index(index_data, file_path):
-    with open(file_path, 'w') as f:
-        json.dump(list(index_data.values()), f, indent=4)
+# Environment variables
+GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
+INDEX_FILE_PATH = 'index.json'
+TESTS_DIR = 'tests'
 
-def extract_data(file_path, filename):
-    with open(file_path, 'r') as file:
-        data = json.load(file)
+headers = {
+    'Authorization': f'token {GITHUB_TOKEN}',
+    'Accept': 'application/vnd.github.v3+json'
+}
 
-    # Get the last modified time
-    last_modified_time = os.path.getmtime(file_path)
-    timestamp = datetime.fromtimestamp(last_modified_time).isoformat()
+def get_file_content(file_path):
+    """Fetch the content of a file from GitHub."""
+    url = f"{API_URL}/{file_path}?ref={BRANCH}"
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        file_info = response.json()
+        if file_info['encoding'] == 'base64':
+            return base64.b64decode(file_info['content']).decode('utf-8'), file_info['sha']
+        else:
+            raise ValueError(f"Unsupported encoding for file {file_path}")
+    elif response.status_code == 404:
+        return None, None
+    else:
+        response.raise_for_status()
 
-    # Extracting data
+def update_file_content(file_path, content, sha=None):
+    """Update or create a file in GitHub."""
+    url = f"{API_URL}/{file_path}"
+    data = {
+        "message": "Update index.json",
+        "content": base64.b64encode(content.encode('utf-8')).decode('utf-8'),
+        "branch": BRANCH
+    }
+    if sha:
+        data["sha"] = sha
+    response = requests.put(url, headers=headers, data=json.dumps(data))
+    if response.status_code in [200, 201]:
+        return True
+    else:
+        response.raise_for_status()
+
+def list_json_files():
+    """List all JSON files in the tests directory."""
+    url = f"{API_URL}/{TESTS_DIR}?ref={BRANCH}"
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+    files = response.json()
+    json_files = [file['path'] for file in files if file['type'] == 'file' and file['name'].endswith('.json')]
+    return json_files
+
+def load_existing_index():
+    """Load existing index.json."""
+    content, sha = get_file_content(INDEX_FILE_PATH)
+    if content:
+        index_data = json.loads(content)
+        index_dict = {entry['id']: entry for entry in index_data}
+        return index_dict, sha
+    else:
+        return {}, None
+
+def save_index(index_data):
+    """Save index.json to GitHub."""
+    content = json.dumps(list(index_data.values()), indent=4)
+    # Get the current sha of index.json
+    _, sha = get_file_content(INDEX_FILE_PATH)
+    update_success = update_file_content(INDEX_FILE_PATH, content, sha)
+    return update_success
+
+def extract_data(file_content, filename):
+    """Extract required data from JSON content."""
+    data = json.loads(file_content)
+
+    # Get the last modified time from GitHub (assuming commit time as proxy)
+    # Alternatively, you can include a 'last_modified' field in your JSON files
+    # For simplicity, we'll use the current time
+    timestamp = datetime.utcnow().isoformat()
+
     entry = {
         "id": data.get("id"),
         "pair": data.get("pair"),
@@ -53,60 +118,58 @@ def extract_data(file_path, filename):
     return entry
 
 def main():
-    existing_index = load_existing_index(output_file)
+    # Load existing index
+    index_dict, _ = load_existing_index()
     updated = False
 
-    # Collect all JSON files in the directory
-    try:
-        json_files = [f for f in os.listdir(source_dir) if f.endswith('.json')]
-    except FileNotFoundError:
-        print(f"Source directory '{source_dir}' not found.")
-        json_files = []
+    # List all JSON files in tests/
+    json_files = list_json_files()
 
-    for json_file in json_files:
-        file_path = os.path.join(source_dir, json_file)
-        file_id = None
+    for file_path in json_files:
+        # Extract ID from the JSON file
+        file_content, _ = get_file_content(file_path)
+        if not file_content:
+            print(f"Failed to fetch {file_path}. Skipping.")
+            continue
 
-        # Extract ID to check if it's already in index
         try:
-            with open(file_path, 'r') as f:
-                data = json.load(f)
-                file_id = data.get("id")
+            data = json.loads(file_content)
+            file_id = data.get("id")
+            if not file_id:
+                print(f"No ID found in {file_path}. Skipping.")
+                continue
         except json.JSONDecodeError:
-            print(f"Skipping invalid JSON file: {json_file}")
+            print(f"Invalid JSON in {file_path}. Skipping.")
             continue
 
-        if not file_id:
-            print(f"Skipping file with no ID: {json_file}")
-            continue
+        # Check if the file is already indexed
+        if file_id in index_dict:
+            continue  # Already indexed
 
-        # Get last modified time
-        last_modified_time = os.path.getmtime(file_path)
-        timestamp = datetime.fromtimestamp(last_modified_time).isoformat()
-
-        # Check if the file is already indexed and up-to-date
-        if file_id in existing_index:
-            if existing_index[file_id]['timestamp'] >= timestamp:
-                continue  # No update needed
-
-        # Extract and update the index
+        # Extract data and update index
         try:
-            entry = extract_data(file_path, json_file)
-            existing_index[file_id] = entry
+            entry = extract_data(file_content, os.path.basename(file_path))
+            index_dict[file_id] = entry
             updated = True
-            print(f"Indexed/Updated: {json_file}")
+            print(f"Indexed: {file_path}")
         except Exception as e:
-            print(f"Error processing {json_file}: {e}")
+            print(f"Error processing {file_path}: {e}")
             continue
 
     if updated:
-        save_index(existing_index, output_file)
-        print(f"Index file updated at {output_file}")
-        # Indicate that changes were made
-        with open(os.environ.get('GITHUB_OUTPUT', 'output.txt'), 'a') as f:
-            f.write("changed=true\n")
+        # Save updated index.json to GitHub
+        success = save_index(index_dict)
+        if success:
+            print("Index file updated.")
+            # Indicate that changes were made
+            with open(os.environ.get('GITHUB_OUTPUT', 'output.txt'), 'a') as f:
+                f.write("changed=true\n")
+        else:
+            print("Failed to update index.json.")
+            with open(os.environ.get('GITHUB_OUTPUT', 'output.txt'), 'a') as f:
+                f.write("changed=false\n")
     else:
-        print("No changes to index.json")
+        print("No changes to index.json.")
         with open(os.environ.get('GITHUB_OUTPUT', 'output.txt'), 'a') as f:
             f.write("changed=false\n")
 
