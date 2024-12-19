@@ -8,18 +8,71 @@ on:
 
 jobs:
   create_index:
-    if: "!contains(github.event.head_commit.message, 'Update index.json')"  # Skip if the commit message is from this action
+    if: "!contains(github.event.head_commit.message, 'Update index.json')"
     runs-on: ubuntu-latest
     env:
       INDEX_FILE: index.json
       SOURCE_DIR: ./tests
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repository (index.json only)
         uses: actions/checkout@v3
         with:
           fetch-depth: 1
-          token: ${{ secrets.ACTION_PAT }}
+          path: repo
+          # Using sparse checkout to fetch only index.json initially
+          sparse-paths: |
+            index.json
+
+      - name: Set up Git for sparse checkout
+        run: |
+          cd repo
+          git config core.sparseCheckout true
+
+      - name: Fetch list of JSON files
+        id: list_files
+        run: |
+          # Load existing index.json
+          if [ -f "index.json" ]; then
+            echo "Loading existing index.json..."
+            jq -r '.[].id' index.json > indexed_ids.txt
+          else
+            echo "No existing index.json found."
+            touch indexed_ids.txt
+          fi
+
+          # List all JSON files in the tests directory
+          find tests -name '*.json' > all_json_files.txt
+
+          # Determine which files need to be processed
+          > files_to_fetch.txt
+          while IFS= read -r file; do
+            # Extract the ID from the filename or file content
+            id=$(jq -r '.id' "$file" 2>/dev/null || echo "")
+            if [ -n "$id" ] && ! grep -qx "$id" indexed_ids.txt; then
+              echo "$file" >> files_to_fetch.txt
+            fi
+          done < all_json_files.txt
+
+          # Set output with the list of files to fetch
+          if [ -s "files_to_fetch.txt" ]; then
+            echo "Files to fetch:"
+            cat files_to_fetch.txt
+            FILES=$(paste -sd "," files_to_fetch.txt)
+            echo "::set-output name=files::$FILES"
+          else
+            echo "No new or updated files to fetch."
+            echo "::set-output name=files::"
+          fi
+
+      - name: Checkout repository (files to fetch)
+        if: steps.list_files.outputs.files != ''
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          path: repo
+          sparse-paths: |
+            $(cat files_to_fetch.txt)
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -29,17 +82,29 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install -r repo/requirements.txt --no-cache-dir
 
       - name: Run Python script
-        run: python create_index.py
+        id: run_script
+        working-directory: repo
+        run: |
+          python create_index.py
+        # Ensure minimal output
 
       - name: Commit and push changes
-        if: success() && steps.create_index.outputs.changed == 'true'
+        if: steps.run_script.outputs.changed == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_PAT }}
         run: |
+          cd repo
           git config --local user.email "action@github.com"
           git config --local user.name "Gunbot Index Generator"
-          git add $INDEX_FILE
+          git add index.json
           git commit -m "Update index.json"
           git push "https://x-access-token:${{ secrets.ACTION_PAT }}@github.com/${{ github.repository }}.git" HEAD:main
+
+      - name: Clean up workspace
+        if: always()
+        run: |
+          rm -rf repo
+          rm -rf $HOME/.cache/pip
