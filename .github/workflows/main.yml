@@ -11,7 +11,7 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'Update index.json')"
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the default GitHub token
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Default GitHub token
 
     steps:
       - name: Set up Python
@@ -30,12 +30,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python create_index.py
-        # The script will handle downloading files, processing, and indicating if index.json was changed
 
       - name: Commit and push changes
         if: steps.run_script.outputs.changed == 'true'
         env:
-          ACTION_PAT: ${{ secrets.ACTION_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Configure Git
           git config --local user.email "action@github.com"
@@ -43,7 +42,13 @@ jobs:
 
           # Initialize a new Git repository
           git init
-          git remote add origin "https://x-access-token:${{ secrets.ACTION_PAT }}@github.com/${{ github.repository }}.git"
+          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+
+          # Fetch the latest main branch to set the correct upstream
+          git fetch origin main
+
+          # Checkout main branch
+          git checkout -b main origin/main
 
           # Add and commit index.json
           git add index.json
