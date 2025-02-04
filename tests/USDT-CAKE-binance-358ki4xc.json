@@ -23,7 +23,10 @@
     "Sells": 17,
     "Trades with profit": 17,
     "Trades with loss": 0,
-    "Fees paid": "10.76 USDT"
+    "Fees paid": "10.76 USDT",
+    "Daily Profit / 1K": "8.77 USDT",
+    "Bag value": "81.01 USDT",
+    "Unrealized PnL": "2 USDT"
   },
   "settings": {
     "INITIAL_FUNDS": 5000,
@@ -42743,6 +42746,9 @@
     "Sells": "Number of sell trades executed. Formula: Count(Sell Trades). Groups trades with identical timestamps.",
     "Trades with profit": "Number of trades resulting in profit. Formula: Count(Profitable Trades). Groups trades with identical timestamps.",
     "Trades with loss": "Number of trades resulting in loss. Formula: Count(Losing Trades). Groups trades with identical timestamps.",
-    "Fees paid": "Total trading fees paid. Formula: Σ(Trade Fees)."
+    "Fees paid": "Total trading fees paid. Formula: Σ(Trade Fees).",
+    "Daily Profit / 1K": "Time and invest weighted metric that shows the average daily return per 1000 invested.",
+    "Bag value": "Value of coin holding at end of the backtesting run, using last candle close price.",
+    "Unrealized PnL": "Unrealized profit and loss at the end of the backtesting run, based on unit cost price."
   }
 }

@@ -23,7 +23,10 @@
     "Sells": 97,
     "Trades with profit": 83,
     "Trades with loss": 14,
-    "Fees paid": "0.00069 BTC"
+    "Fees paid": "0.00069 BTC",
+    "Daily Profit / 1K": "1.7 BTC",
+    "Bag value": "0.022067 BTC",
+    "Unrealized PnL": "0.000392 BTC"
   },
   "settings": {
     "TRADING_LIMIT": 0.0033333333333333335,
@@ -64195,6 +64198,9 @@
     "Sells": "Number of sell trades executed. Formula: Count(Sell Trades). Groups trades with identical timestamps.",
     "Trades with profit": "Number of trades resulting in profit. Formula: Count(Profitable Trades). Groups trades with identical timestamps.",
     "Trades with loss": "Number of trades resulting in loss. Formula: Count(Losing Trades). Groups trades with identical timestamps.",
-    "Fees paid": "Total trading fees paid. Formula: Σ(Trade Fees)."
+    "Fees paid": "Total trading fees paid. Formula: Σ(Trade Fees).",
+    "Daily Profit / 1K": "Time and invest weighted metric that shows the average daily return per 1000 invested.",
+    "Bag value": "Value of coin holding at end of the backtesting run, using last candle close price.",
+    "Unrealized PnL": "Unrealized profit and loss at the end of the backtesting run, based on unit cost price."
   }
 }
